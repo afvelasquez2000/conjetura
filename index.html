@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CONJETURA DE VELASQUEZ</title>
+    <link rel="icon" type="image/png" href="libraries/cun.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="libraries/css/simple-sidebar.css">
+    <!--iconos-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+
+    <!--datables CSS básico-->
+    <link rel="stylesheet" type="text/css" href="libraries/dataTables/datatables.min.css"/>
+    <!--datables estilo bootstrap 4 CSS-->
+    <link rel="stylesheet"  type="text/css" href="libraries/dataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+
+  </head>
+
+  <body>
+         <!--formulario-->
+             <div class="container-fluid">
+                <div class="col-md-6 offset-3">
+                    <br>
+                     <div class="card">
+                        <div class="card-header text-center">
+                            <h5 class="card-title">CONJETURA DE VELÁSQUEZ</h5>
+                        </div>
+                            <div class="card-body">
+                                <p class="text-justify">Todo número primo mayor que 7  elevado al cuadrado da  como resultado un número el cual la unidad termina siempre en 1  o 9.</p>
+                                <form id="operacion">
+                                    <div class="form-group">
+                                        <label>Numero: </label>
+                                        <input type="number" class="form-control" id="numero" name="numero" placeholder="Digite el numero primo mayor a dos cifras" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button type="submit" id="buscar" class="btn btn-outline-info" onclick="operacion()"><i class="fas fa-search"></i> Buscar</button>
+                            </div>
+                        </div>
+                   </div>
+               </div>
+         </div>
+      <!-- /#page-content-wrapper -->
+
+
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="libraries/jquery.js"></script>
+    <script src="libraries/popper.min.js"></script>
+    <script src="libraries/bootstrap/js/bootstrap.min.js"></script>
+    <script src="libraries/sweetalert.min.js"></script>
+
+
+    <!--menu-->
+    <script>
+		//Sweet Alert		
+
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+    <script>
+        function operacion(){
+        var n1 = $('#numero').attr("value");
+
+        var primo;
+        var operacion;
+        i = 2;
+        primo=true;
+
+        while(i<n1){ 
+            if(n1% i== 0){
+                primo = false;
+            }
+            i++;
+        }
+        if(primo==true){
+            operacion = Math.pow(n1,2);
+            var n = operacion.toString();
+            var unidad = n.charAt(n.length - 1);
+            $("#buscar").click(function (){
+        	swal("El numero es primo: " + operacion + " \n    Su unidad es  "+unidad+" ", {icon: "success"});	
+            });
+        } else{
+            $("#buscar").click(function (){			        				
+            swal("Advertencia", "El numero "+ n1 +" no es primo", {icon: "warning"});
+            });
+        }       
+    }
+
+    </script>
+
+  </body>
+</html>
+
+
+
